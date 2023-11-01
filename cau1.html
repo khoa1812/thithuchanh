@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function findThirdHighest(scores) {
+        let highest = Number.MIN_SAFE_INTEGER;
+        let secondHighest = Number.MIN_SAFE_INTEGER;
+        let thirdHighest = Number.MIN_SAFE_INTEGER;
+
+        for (let score of scores) {
+            if (score > highest) {
+                thirdHighest = secondHighest;
+                secondHighest = highest;
+                highest = score;
+            }
+            else if (score > secondHighest && score < highest) {
+                thirdHighest = secondHighest;
+                secondHighest = score;
+            }
+            else if (score > thirdHighest && score < secondHighest) {
+                thirdHighest = score;
+            }
+        }
+
+        return thirdHighest;
+    }
+
+    let scores = [85, 90, 87, 92, 88, 83, 79, 91, 94, 86];
+    console.log(findThirdHighest(scores));
+
+</script>
+</body>
+</html>
